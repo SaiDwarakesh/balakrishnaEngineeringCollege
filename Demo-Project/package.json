@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href \"/Demo Repo/\"",
-    "deploy": "npx -y angular-cli-ghpages --dir=dist/demo-projects/browser --base-href=\"/Demo Repo/\"",
+    "build": "ng build --base-href \"/balakrishnaEngineeringCollege/\"",
+    "deploy": "npx -y angular-cli-ghpages --dir=dist/demo-projects/browser --base-href=\"/balakrishnaEngineeringCollege/\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
