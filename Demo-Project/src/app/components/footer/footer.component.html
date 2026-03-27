@@ -1,0 +1,52 @@
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-section">
+      <h3>{{ collegeInfo.name }}</h3>
+      @for (item of collegeInfo.approvals; track $index) {
+      <p>{{ item }}</p>
+      }
+    </div>
+
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        @for (link of quickLinks; track link.label) {
+        <li class="flex items-center gap-2 group">
+          @if (link.icon) {
+          <img [src]="link.icon" [alt]="link.label"
+            class="w-5 h-5 object-contain group-hover:scale-110 transition-transform">
+          }
+          <a [routerLink]="link.route" class="hover:text-danger transition-colors">{{ link.label }}</a>
+        </li>
+        }
+      </ul>
+    </div>
+
+
+
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p>📍 {{ collegeInfo.location }}</p>
+      <p>📞 {{ collegeInfo.phone }}</p>
+      <p>✉️ {{ collegeInfo.email }}</p>
+
+      <div class="social-icons">
+        @for (social of socialLinks; track social.name) {
+        <a [href]="social.url" target="_blank" [attr.aria-label]="social.name" class="social-link">
+
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path [attr.d]="social.svgPath"></path>
+          </svg>
+
+        </a>
+        }
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © {{ currentYear }} {{ collegeInfo.name }} | Government of Andhra Pradesh
+  </div>
+</footer>

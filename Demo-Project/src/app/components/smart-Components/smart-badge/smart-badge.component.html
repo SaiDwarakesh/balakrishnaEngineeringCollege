@@ -1,0 +1,44 @@
+<span class="border-solid border justify-center leading-none flex items-center gap-2 "
+
+    [ngClass]="{
+    'font-normal' : weight == 'normal',
+    'font-medium' : weight == 'medium',
+    'font-semibold' : weight == 'semi',
+    'font-bold' : weight == 'bold',
+    'text-[8px] py-0.5 px-1':size=='xsSmall',
+    'text-3xs py-1 ':size=='extraSmall',
+    'py-1.5':size=='small',
+    'p-2':size=='default',
+    'text-2sm py-2.5 px-2.5':size=='large',
+    'px-1.5':size=='extraSmall'|| size=='small',
+    'text-2xs':size=='small'||size=='default',
+
+    'text-primary bg-primary-light  dark:text-dr-primary dark:bg-dr-primary-light':Type=='primary'&&!colorInversion && !applyCustomColor,
+    'text-danger bg-danger-light border-danger-clarity dark:text-dr-danger dark:border-dr-danger-clarity dark:bg-dr-danger-light':Type=='danger'&&!colorInversion && !applyCustomColor,
+    'text-warning bg-warning-light border-warning-clarity dark:text-dr-warning dark:border-dr-warning-clarity dark:bg-dr-warning-light':Type=='warning'&&!colorInversion && !applyCustomColor,
+    'text-success bg-success-light border-success-clarity dark:text-dr-success dark:border-dr-success-clarity dark:bg-dr-success-light':Type=='success'&&!colorInversion && !applyCustomColor,
+    'text-breaktime bg-breaktime-light border-breaktime-clarity dark:text-dr-breaktime dark:border-dr-breaktime-clarity dark:bg-breaktime-light':Type=='breaktime'&&!colorInversion && !applyCustomColor,
+    'text-cyan-600 bg-cyan-100 border-cyan-150 dark:text-dr-cyan-100 dark:bg-cyan-clarity dark:border-cyan-clarity':Type=='info'&&!colorInversion && !applyCustomColor,
+
+    
+    ' bg-primary    dark:bg-dr-primary':Type=='primary'&&colorInversion && !applyCustomColor,
+
+    ' bg-danger dark:bg-dr-danger':Type=='danger'&&colorInversion && !applyCustomColor,
+    'bg-warning dark:bg-dr-warning':Type=='warning'&&colorInversion && !applyCustomColor,
+    ' bg-success  dark:bg-dr-success':Type=='success'&&colorInversion && !applyCustomColor,
+    ' bg-breaktime  dark:bg-breaktime':Type=='breaktime'&&colorInversion && !applyCustomColor,
+    'text-white':colorInversion && !applyCustomColor,
+    'text-inherit bg-inherit ':Type=='custom',
+    'dark:border-dr-primary-clarity border-primary-clarity' : ( Type == 'custom' || Type=='primary'&&!colorInversion && !applyCustomColor ),
+    'rounded' : round == 'small',
+    'rounded-md' : round == 'default',
+    'rounded-lg' : round == 'large',
+    'rounded-xl' : round == 'extraLarge',
+    'rounded-full' : round == 'full'
+    }"
+       [style.borderColor]="applyCustomColor ?badgeBackgroundColor : null"
+       [style.color]="applyCustomColor ? badgeTextColor : null"
+       [style.backgroundColor]="applyCustomColor ? badgeBackgroundColor: null"
+    >
+    <ng-content></ng-content>
+</span>      

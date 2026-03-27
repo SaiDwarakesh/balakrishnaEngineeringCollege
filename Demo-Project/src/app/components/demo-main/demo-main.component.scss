@@ -1,0 +1,102 @@
+:host {
+  display: block;
+}
+
+// Fade in animation for welcome section
+.animate-fade-in {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.animate-fade-in-left {
+  opacity: 0;
+  animation: fadeInLeft 1s ease-out forwards;
+}
+
+.animate-fade-in-right {
+  opacity: 0;
+  animation: fadeInRight 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.delay-\[200ms\] { animation-delay: 200ms; }
+.delay-\[400ms\] { animation-delay: 400ms; }
+.delay-\[600ms\] { animation-delay: 600ms; }
+
+// Carousel Specific Transitions (Standard names, no brackets)
+.zIndex-10 {
+  z-index: 10;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+.transition-all {
+  transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+// Simplified SCSS to avoid SASS compiler issues with Tailwind characters
+.bg-white:hover {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+h1 {
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+// Course section icon hover
+.group:hover i {
+  color: var(--danger);
+}

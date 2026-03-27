@@ -1,0 +1,42 @@
+<div class="relative" [satPopoverAnchor]="popover" (mouseenter)="onTriggerMouseEnter()" (mouseleave)="onTriggerMouseLeave()">
+    <div class="flex flex-row whitespace-nowrap justify-center items-center gap-2 border-b-2
+    cursor-pointer font-medium min-w-20 pb-3 px-2
+    text-gray-700  2xl:px-4
+    dark:text-dr-gray-700" 
+    [ngClass]="{
+       'border-b-primary text-primary dark:border-b-dr-primary dark:text-dr-primary': selected,
+       'border-b-transparent' : !selected,
+       '2xl:text-base max-2xl:text-sm' :size=='default',
+       '2xl:text-sm max-2xl:text-xs' :size=='extra-small',
+       '2xl:text-lg  max-2xl:text-base' :size=='medium',
+       '2xl:text-2xl max-2xl:text-xl' :size=='large',
+       'hover:text-primary dark:hover:text-dr-primary':isHoverEnabled,
+    }">
+        <ng-content></ng-content>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#4b5675" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-3">
+            <path fill="#fff" stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+    </div>
+
+    <sat-popover #popover [hasBackdrop]="false" [horizontalAlign]="'before'" [verticalAlign]="'center'" [autoFocus]="false" scrollStrategy="close">
+        <div class="absolute bg-white border border-gray-200 flex flex-col gap-1 p-2 rounded-lg z-10 shadow mt-3
+        dark:bg-coal-600 dark:border-dr-gray-200" (mouseleave)="onMouseLeave()" (mouseenter)="onMouseEntered()">
+            @for (tab of subTabs; track $index; let idx = $index) {
+                <a [routerLink]="tab.route"  [queryParams]="currentParams" class="font-medium hover:bg-gray-100  px-2 py-1 rounded-md text-gray-700 whitespace-nowrap
+                dark:hover:bg-dr-gray-200 dark:hover:text-white dark:text-dr-gray-800"
+                 [ngClass]="{
+                    'bg-gray-100 text-gray-900': selectedTabIndex == idx ,
+                    'dark:bg-dr-gray-200 dark:text-white': selectedTabIndex == idx ,
+                    'text-sm' :size=='default',
+                    'text-xs' :size=='extra-small',
+                    'text-base' :size=='medium',
+                   'text-lg' :size=='large',
+                }" 
+                (click)="tabChanged(idx);popover.close()">
+                    {{tab.tabName}}
+                </a>
+            }
+
+        </div>
+    </sat-popover>
+</div>

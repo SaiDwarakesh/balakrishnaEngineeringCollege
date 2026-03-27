@@ -1,0 +1,87 @@
+:host {
+  display: block;
+}
+
+// Reuse animation logic
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-left {
+  opacity: 0;
+  animation: fadeInLeft 1s ease-out forwards;
+}
+
+.animate-fade-in-right {
+  opacity: 0;
+  animation: fadeInRight 1s ease-out forwards;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Delays
+.delay-200 { animation-delay: 200ms; }
+.delay-400 { animation-delay: 400ms; }
+
+// Responsive Table Container
+.bg-white.rounded-b-2xl {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+// Prevent table stretching on small screens
+table {
+  min-width: 600px;
+}
+
+// Mobile overrides for title
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem !important; }
+  .py-20 { padding: 3rem 0; }
+}
+
+// CTA text shadow
+h2.drop-shadow-2xl {
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}

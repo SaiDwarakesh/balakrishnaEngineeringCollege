@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+
+// Reuse animation logic
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Delays
+.delay-300 { animation-delay: 300ms; }
+.delay-500 { animation-delay: 500ms; }
+
+// Mobile overrides
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem !important; }
+  .py-20 { padding: 3rem 0; }
+  
+  // Adjusted alignment for mobile steps
+  .sm\:block { display: none; }
+}
+
+// Enhanced bullet point list
+.space-y-4 .flex i {
+  margin-top: 4px;
+}

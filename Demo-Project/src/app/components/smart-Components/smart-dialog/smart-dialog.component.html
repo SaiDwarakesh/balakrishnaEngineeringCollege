@@ -1,0 +1,18 @@
+<div class="fixed top-2/4 left-2/4 transform -translate-x-1/2 -translate-y-1/2 z-50" 
+    [ngStyle]="{'z-index' : index + 50 }">
+    <smart-card [round]="'large'">
+        @if (isTemplate) {
+            <ng-container [ngTemplateOutlet]="content"></ng-container>
+        }
+        @else {
+            <ng-container [ngComponentOutlet]="content" [ngComponentOutletInputs]="componentInputs"></ng-container>
+        }      
+    </smart-card>
+</div>
+
+<div class="fixed top-0 right-0 bottom-0 left-0" [ngStyle]="{'z-index': index+50-1}" 
+[ngClass]="{
+    'bg-black/75':backgroundNeed
+}"
+
+></div>

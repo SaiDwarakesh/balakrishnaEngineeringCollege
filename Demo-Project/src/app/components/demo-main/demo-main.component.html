@@ -1,0 +1,284 @@
+<div class="relative w-full h-[75vh] lg:h-[60vh] overflow-hidden group">
+  <!-- Slides Container -->
+  <div class="relative w-full h-full">
+    @for (banner of banners; track $index) {
+    <div class="absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out transform"
+      [class.opacity-100]="currentIndex === $index" [class.zIndex-10]="currentIndex === $index"
+      [class.opacity-0]="currentIndex !== $index" [class.scale-110]="currentIndex !== $index">
+      <!-- Background Image -->
+      <img [src]="banner.image" class="w-full h-full object-cover brightness-[0.4]" [alt]="banner.title">
+
+      <!-- Content Overlay -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+        <div class="space-y-6 max-w-4xl transition-all duration-1000 delay-300 transform"
+          [class.translate-y-0]="currentIndex === $index" [class.opacity-100]="currentIndex === $index"
+          [class.translate-y-10]="currentIndex !== $index" [class.opacity-0]="currentIndex !== $index">
+          <h1 class="text-4xl lg:text-7xl font-black text-white uppercase tracking-tight leading-none drop-shadow-2xl">
+            {{ banner.title }}
+          </h1>
+          <p class="text-xl lg:text-2xl text-gray-200 font-bold uppercase tracking-[0.3em] drop-shadow-xl">
+            {{ banner.subtitle }}
+          </p>
+          <div class="flex gap-6 justify-center pt-6">
+            <button routerLink="/admissions"
+              class="px-8 lg:px-12 py-4 bg-danger text-white rounded-2xl font-black uppercase text-lg hover:scale-105 shadow-2xl transition-all tracking-widest">
+              Admission Open
+            </button>
+            <button routerLink="/about"
+              class="px-8 lg:px-12 py-4 border-2 border-white text-white rounded-2xl font-black uppercase text-lg hover:bg-white hover:text-dark transition-all tracking-widest hidden md:block">
+              Learn More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- Navigation Arrows (Hidden on Mobile) -->
+  <button (click)="prevSlide()"
+    class="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center hover:bg-danger hover:border-danger transition-all opacity-0 group-hover:opacity-100 z-50 hidden lg:flex">
+    <i class="fa fa-angle-left text-2xl"></i>
+  </button>
+  <button (click)="nextSlide()"
+    class="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center hover:bg-danger hover:border-danger transition-all opacity-0 group-hover:opacity-100 z-50 hidden lg:flex">
+    <i class="fa fa-angle-right text-2xl"></i>
+  </button>
+
+  <!-- Progress Dots -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-4 z-50">
+    @for (dot of banners; track $index) {
+    <button (click)="goToSlide($index)" class="w-12 h-2 rounded-full transition-all duration-300"
+      [ngClass]="currentIndex === $index ? 'bg-danger scale-125' : 'bg-white/30'"></button>
+    }
+  </div>
+</div>
+
+<!-- Welcome Section (Brief) -->
+<section class="py-16 lg:py-24 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-4 max-w-6xl text-center space-y-8 animate-fade-in">
+    <h3 class="text-danger font-bold text-lg lg:text-xl tracking-[0.5em] uppercase">Welcome To The</h3>
+    <h2 class="text-dark font-black text-4xl lg:text-6xl uppercase leading-tight">
+      BalaKrishna Degree & PG <br>
+      <span class="text-gray-400">Educational Institution</span>
+    </h2>
+    <p class="text-gray-500 text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto">
+      Founded on the pillars of academic excellence and character building, we provide a nurturing environment where
+      innovation and tradition meet.
+    </p>
+    <div class="pt-6">
+      <a routerLink="/colleges"
+        class="text-dark font-black uppercase tracking-widest border-b-2 border-danger pb-2 hover:text-danger transition-colors italic">
+        Discover our colleges <i class="fa fa-arrow-right ml-2"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Our Institutions Section -->
+<section class="py-16 lg:py-24 bg-gray-50 overflow-hidden">
+  <div class="container mx-auto px-4 max-w-7xl">
+    <div class="text-center mb-16 space-y-4">
+      <h3 class="text-danger font-bold text-sm lg:text-lg tracking-[0.4em] uppercase">Diverse Learning Options</h3>
+      <h2 class="text-dark font-black text-3xl lg:text-5xl uppercase tracking-tight">Our Institutions</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto font-medium">Spanning multiple cities in Andhra Pradesh, our
+        institutions offer tailored education with modern infrastructure and exceptional results.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Institution 1 -->
+      <div
+        class="bg-white rounded-[2rem] shadow-xl overflow-hidden border border-gray-100 group hover:transform hover:-translate-y-2 transition-all p-3 animate-fade-in-up">
+        <div class="h-60 rounded-3xl overflow-hidden relative">
+          <img src="assets/banners/banner-2.png"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Inst 1">
+        </div>
+        <div class="p-6 space-y-4">
+          <h4 class="text-dark font-black text-lg leading-tight uppercase">Balakrishna Degree College, Ongole</h4>
+          <p class="text-gray-500 text-sm line-clamp-3">Premier degree programs with modern infrastructure and
+            industry-aligned curriculum for holistic development.</p>
+          <button routerLink="/colleges"
+            class="w-full py-3.5 bg-danger text-white rounded-xl font-black uppercase text-xs tracking-widest hover:bg-danger-active transition-colors shadow-lg shadow-danger/20">More
+            Details <i class="fa fa-plus ml-1"></i></button>
+        </div>
+      </div>
+
+      <!-- Institution 2 -->
+      <div
+        class="bg-white rounded-[2rem] shadow-xl overflow-hidden border border-gray-100 group hover:transform hover:-translate-y-2 transition-all p-3 animate-fade-in-up delay-[200ms]">
+        <div class="h-60 rounded-3xl overflow-hidden relative">
+          <img src="assets/about/college-group-1.png"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Inst 2">
+        </div>
+        <div class="p-6 space-y-4">
+          <h4 class="text-dark font-black text-lg leading-tight uppercase">Balakrishna Junior College, Ongole</h4>
+          <p class="text-gray-500 text-sm line-clamp-3">Foundation for intermediate education with strong focus on
+            competitive exams and higher studies preparation.</p>
+          <button routerLink="/colleges"
+            class="w-full py-3.5 bg-danger text-white rounded-xl font-black uppercase text-xs tracking-widest hover:bg-danger-active transition-colors shadow-lg shadow-danger/20">More
+            Details <i class="fa fa-plus ml-1"></i></button>
+        </div>
+      </div>
+
+      <!-- Institution 3 -->
+      <div
+        class="bg-white rounded-[2rem] shadow-xl overflow-hidden border border-gray-100 group hover:transform hover:-translate-y-2 transition-all p-3 animate-fade-in-up delay-[400ms]">
+        <div class="h-60 rounded-3xl overflow-hidden relative">
+          <img src="assets/colleges/banner-poster.png"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Inst 3">
+        </div>
+        <div class="p-6 space-y-4">
+          <h4 class="text-dark font-black text-lg leading-tight uppercase">SRK Degree & PG College, Ongole</h4>
+          <p class="text-gray-500 text-sm line-clamp-3">Advanced postgraduate education with high-tech research
+            opportunities and exceptional placement support.</p>
+          <button routerLink="/colleges"
+            class="w-full py-3.5 bg-danger text-white rounded-xl font-black uppercase text-xs tracking-widest hover:bg-danger-active transition-colors shadow-lg shadow-danger/20">More
+            Details <i class="fa fa-plus ml-1"></i></button>
+        </div>
+      </div>
+
+      <!-- Institution 4 -->
+      <div
+        class="bg-white rounded-[2rem] shadow-xl overflow-hidden border border-gray-100 group hover:transform hover:-translate-y-2 transition-all p-3 animate-fade-in-up delay-[600ms]">
+        <div class="h-60 rounded-3xl overflow-hidden relative">
+          <img src="assets/banners/banner-3.png"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Inst 4">
+        </div>
+        <div class="p-6 space-y-4">
+          <h4 class="text-dark font-black text-lg leading-tight uppercase">Balakrishna Degree College, Ongole</h4>
+          <p class="text-gray-500 text-sm line-clamp-3">Quality higher education focused on employability, research, and
+            character building in Ongole region.</p>
+          <button routerLink="/colleges"
+            class="w-full py-3.5 bg-danger text-white rounded-xl font-black uppercase text-xs tracking-widest hover:bg-danger-active transition-colors shadow-lg shadow-danger/20">More
+            Details <i class="fa fa-plus ml-1"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Legacy of Excellence Section -->
+<section class="py-16 lg:py-24 bg-white">
+  <div class="container mx-auto px-4 max-w-7xl">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="relative group p-4 animate-fade-in-left">
+        <div
+          class="absolute inset-0 bg-danger/10 rounded-[4rem] group-hover:rotate-3 transition-transform duration-700 blur">
+        </div>
+        <img src="assets/about/legacy-group-2.png"
+          class="relative z-10 w-full rounded-[4rem] shadow-2xl border-8 border-white" alt="Excellence">
+        <div
+          class="absolute -bottom-6 -right-6 bg-white p-6 rounded-3xl shadow-xl z-20 space-y-1 border border-gray-100 hidden md:block">
+          <span class="text-danger font-black text-4xl leading-none">30+</span>
+          <p class="text-dark font-bold text-xs uppercase tracking-widest">Years of <br>Legacy</p>
+        </div>
+      </div>
+
+      <div class="space-y-8 animate-fade-in-right">
+        <div>
+          <h3 class="flex items-center gap-3 text-danger font-bold text-sm lg:text-lg tracking-[0.4em] uppercase mb-2">
+            <span class="w-8 h-1 bg-danger"></span> About Us
+          </h3>
+          <h2 class="text-dark font-black text-3xl lg:text-5xl uppercase leading-[1.1]">
+            Transforming Education <br> Since 300 Years <br>
+            <span class="text-gray-400">A Legacy Of Excellence</span>
+          </h2>
+        </div>
+
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Established in 2002, Balakrishna DEGREE & PG COLLEGE pioneers innovation in higher education, blending
+          academics with entrepreneurship and employment readiness. Our urban campus model fosters exploration and
+          industry-aligned learning.
+        </p>
+        <p class="text-gray-500 leading-relaxed font-medium">
+          With a legacy of motivating students to think critically and aspire boldly, we've shaped generations through
+          purposeful education. Our institutions continue to bridge knowledge with real-world success across Andhra
+          Pradesh.
+        </p>
+
+        <button routerLink="/about"
+          class="px-10 py-4 bg-primary text-white rounded-2xl font-black uppercase text-sm tracking-[0.2em] shadow-xl shadow-primary/20 hover:scale-105 transition-all">
+          Learn More <i class="fa fa-long-arrow-right ml-2 text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Explore Our Courses (Blue Section) -->
+<section class="py-16 lg:py-24 bg-[#14238b] relative overflow-hidden">
+  <!-- Subtle Grid BG effect -->
+  <div class="absolute inset-0 opacity-10"
+    style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+  <div class="container mx-auto px-4 max-w-7xl relative z-10 text-center space-y-12 animate-fade-in-up">
+    <div class="space-y-6">
+      <h3 class="text-white/50 font-bold text-lg lg:text-xl tracking-[0.5em] uppercase">Explore Our Courses</h3>
+      <h2 class="text-white font-black text-3xl lg:text-5xl leading-tight uppercase tracking-tight">
+        Complete Pathways From <br>
+        School To Postgraduation
+      </h2>
+      <p class="text-white/70 max-w-3xl mx-auto font-medium lg:text-lg">From basic schooling to advanced PG programs, we
+        offer structured academic journeys in sciences, commerce, and teacher education.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
+      <!-- Course 1 -->
+      <div
+        class="bg-white p-8 rounded-[3rem] shadow-2xl space-y-4 hover:transform hover:scale-105 transition-all group">
+        <div class="text-danger flex justify-center"><i
+            class="fa fa-school text-5xl group-hover:scale-110 transition-transform"></i></div>
+        <h4 class="text-dark font-black text-2xl uppercase tracking-tight">Olympiad School (CBSE)</h4>
+        <p class="text-gray-500 font-medium leading-relaxed italic text-sm">
+          Class VI to X - Excellence with Olympian training, holistic development, and smart classroom learning.
+        </p>
+      </div>
+
+      <!-- Course 2 -->
+      <div
+        class="bg-white p-8 rounded-[3rem] shadow-2xl space-y-4 hover:transform hover:scale-105 transition-all group scale-110 z-10">
+        <div class="text-danger flex justify-center"><i
+            class="fa fa-graduation-cap text-5xl group-hover:scale-110 transition-transform"></i></div>
+        <h4 class="text-dark font-black text-2xl uppercase tracking-tight">Junior College (Intermediate)</h4>
+        <p class="text-gray-500 font-medium leading-relaxed italic text-sm">
+          MPC (Maths, Physics, Chem), BiPC (Biology, Physics, Chem), CEC (Commerce, Economics, Civics).
+        </p>
+      </div>
+
+      <!-- Course 3 -->
+      <div
+        class="bg-white p-8 rounded-[3rem] shadow-2xl space-y-4 hover:transform hover:scale-105 transition-all group">
+        <div class="text-danger flex justify-center"><i
+            class="fa fa-university text-5xl group-hover:scale-110 transition-transform"></i></div>
+        <h4 class="text-dark font-black text-2xl uppercase tracking-tight">Degree College (UG)</h4>
+        <p class="text-gray-500 font-medium leading-relaxed italic text-sm">
+          B.Sc (M.P.Cs, M.S.Cs), Nursing, B.Com (Gen, Comp), Industry Ready Courses, BBA, BCA, BFA.
+        </p>
+      </div>
+    </div>
+
+    <!-- Second Row of Courses -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div
+        class="bg-white p-8 rounded-[3rem] shadow-2xl space-y-4 hover:transform hover:scale-105 transition-all group">
+        <div class="text-danger flex justify-center"><i
+            class="fa fa-book text-5xl group-hover:scale-110 transition-transform"></i></div>
+        <h4 class="text-dark font-black text-2xl uppercase tracking-tight">Teacher Education</h4>
+        <p class="text-gray-500 font-medium leading-relaxed italic text-sm">
+          D.El.Ed (Diploma in Education) : Comprehensive 2-year program shaping future educators through innovative
+          teaching.
+        </p>
+      </div>
+
+      <div
+        class="bg-white p-8 rounded-[3rem] shadow-2xl space-y-4 hover:transform hover:scale-105 transition-all group">
+        <div class="text-danger flex justify-center"><i
+            class="fa fa-certificate text-5xl group-hover:scale-110 transition-transform"></i></div>
+        <h4 class="text-dark font-black text-2xl uppercase tracking-tight">Postgraduation (PG)</h4>
+        <p class="text-gray-500 font-medium leading-relaxed italic text-sm">
+          M.Sc, M.Com : Advanced level for specialization with industrial exposure and modern lab facilities.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

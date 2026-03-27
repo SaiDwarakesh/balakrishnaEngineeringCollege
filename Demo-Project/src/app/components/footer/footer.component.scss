@@ -1,0 +1,123 @@
+.footer {
+  background: linear-gradient(135deg, #001e51 0%, #003366 100%);
+  color: #ffffff;
+  margin-top: auto;
+  border-top: 4px solid #ff3d57;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px 30px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer-section {
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #ff3d57;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #ff3d57;
+    padding-bottom: 8px;
+    display: inline-block;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 8px 0;
+    color: #e0e0e0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 12px 0;
+      font-size: 0.95rem;
+      color: #e0e0e0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+
+      a {
+        color: #e0e0e0;
+        text-decoration: none;
+        transition: all 0.2s ease;
+
+        &:hover {
+          color: #ff3d57;
+          transform: translateX(4px);
+        }
+      }
+    }
+  }
+}
+
+.social-icons {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background-color: rgba(255, 61, 87, 0.1);
+  border: 1px solid #ff3d57;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #ff3d57;
+    transform: translateY(-3px);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: #ff3d57;
+  }
+
+  &:hover svg {
+    fill: #ffffff;
+  }
+}
+
+.footer-bottom {
+  background-color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

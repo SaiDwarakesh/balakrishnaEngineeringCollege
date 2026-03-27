@@ -1,0 +1,78 @@
+<div class="flex justify-between border-b border-b-gray-200 items-baseline dark:border-dr-gray-200 gap-6">
+
+    <div  class="flex flex-row flex-grow overflow-hidden relative gap-3 items-start px-2">
+        @if (canScrollLeft) {
+            <button (click)="scrollLeft()" class="rounded-full p-1" [disabled]="!canScrollLeft"
+            [ngClass]="{'text-gray-700 shadow hover:bg-primary-light' : canScrollLeft, 'text-gray-400': !canScrollLeft}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+            </button>
+        }
+
+        <div #tabsWrapper  class="flex flex-row flex-grow gap-3 overflow-x-auto scrollbar-hide">
+            @if (routing) {
+                @for (tab of tabs; track tab.tabName; let idx = $index) {
+
+                    @if (tab.subTabs) {
+                        <smart-tab-dropdown [selected]="selectedTabIndex == idx" [size]="size" [subTabs]="tab.subTabs" [selectedSubTabIndex]="selectedSubTabIndex" (tabChange)="setSubTabIndex($event,idx)">
+                            {{tab.tabName}}
+                        </smart-tab-dropdown>
+
+                    }
+
+                    @else {
+                        <a [routerLink]="tab.route"  [queryParams]="currentParams">
+                            <smart-tab  [size]="size" [selected]="selectedTabIndex == idx" (click)="tab?.isdisable?'':setIndex(idx)" [ngClass]="{ 'relative inline-flex items-center': tab.tabName == 'Work Schedules' || tab.tabName == 'Webcam Live' || tab.tabName == 'Webcam Recordings' ||  tab.tabName == 'Sound Recordings' || tab.tabName == 'Suspicious Activity' || tab.tabName == 'Activity Levels'|| tab.tabName == 'Activity Timelines' || tab.tabName =='Website Access Control'  ||  tab.tabName=='Upload/Download Restrictions' || tab.tabName=='Website Access Violation' || tab.tabName=='Upload/Download Violation' }">
+                                <!-- {{tab.tabName}} -->
+                                <span [ngClass]="{'flex gap-2 items-center': tab.tabName == 'Work Schedules' || tab.tabName == 'Webcam Live' || tab.tabName == 'Webcam Recordings' ||  tab.tabName == 'Sound Recordings' ||  tab.tabName == 'Suspicious Activity' || tab.tabName == 'Activity Levels'|| tab.tabName == 'Activity Timelines' || tab.tabName =='Website Access Control'  ||  tab.tabName=='Upload/Download Restrictions' || tab.tabName=='Website Access Violation' || tab.tabName=='Upload/Download Violation' }">
+                                    {{tab.tabName}}
+                                    @if(tab.tabName == 'Work Schedules' || tab.tabName == 'Webcam Live' || tab.tabName == 'Webcam Recordings' ||  tab.tabName == 'Sound Recordings' || tab.tabName == 'Suspicious Activity' || tab.tabName == 'Activity Levels'|| tab.tabName == 'Activity Timelines' || tab.tabName =='Website Access Control'  ||  tab.tabName=='Upload/Download Restrictions' || tab.tabName=='Website Access Violation' ||  tab.tabName=='Upload/Download Violation'  ){
+                                         <div [smartTooltip]="'Coming Soon'" [position]="'below'" class="mt-1">
+                                    <smart-badge size="xsSmall" Type="primary" weight="normal" round ='small'>Soon</smart-badge>
+                                  </div>
+                                    }
+                                  </span>
+                            </smart-tab>
+                        </a>
+                    }
+                }
+            }
+            @else {
+
+                @if(TabTemplate.length){
+                    @for (template of TabTemplate; track $index;let idx = $index) {
+                        <smart-tab [size]="size" [selected]="selectedTabIndex == idx" (click)="setIndex(idx)">
+                            <ng-container [ngTemplateOutlet]="template" />
+                        </smart-tab>
+                    }
+                }
+                @else{
+                    @for (tab of tabs; track tab.tabName; let idx = $index) {
+                        <smart-tab [size]="size" [selected]="selectedTabIndex == idx" (click)="tab?.isdisable?'':setIndex(idx)" [disableStatus]="tab.isdisable" [ngClass]="{'relative inline-flex items-center': tab.tabName == 'Work Schedules'}">
+                            <span [ngClass]="{'flex items-center gap-2': tab.tabName == 'Work Schedules'}">
+                                {{tab.tabName}}
+                                @if(tab.tabName == 'Work Schedules'){
+                                    <div [smartTooltip]="'Coming Soon'" [position]="'below'" class="mt-1">
+                                    <smart-badge size="xsSmall" Type="primary" weight="normal" round ='small'>Soon</smart-badge>
+                                  </div>
+                                }
+                              </span>
+                        </smart-tab>
+                    }
+                }
+            }
+        </div>
+        @if (canScrollRight) {
+            <button (click)="scrollRight()" class="rounded-full p-1" [disabled]="!canScrollRight"
+            [ngClass]="{'text-gray-700 shadow hover:bg-primary-light':canScrollRight, 'text-gray-400': !canScrollRight}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+            </button>
+        }
+    </div>
+    <div class="flex flex-row gap-3">
+        <ng-content select = "[more]"></ng-content>
+    </div>
+</div>

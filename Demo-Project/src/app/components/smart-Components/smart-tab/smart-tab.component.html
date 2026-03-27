@@ -1,0 +1,19 @@
+<div class="flex flex-row whitespace-nowrap justify-center items-center gap-2 border-b-2  font-medium 
+min-w-20 pb-3 px-2  2xl:px-4    "
+[ngClass]="{
+  'border-b-primary text-primary dark:border-b-dr-primary dark:text-dr-primary': selected, 'border-b-transparent' : !selected, 
+  ' cursor-pointer text-gray-700 dark:text-dr-gray-700': !disableStatus,
+  'hover:text-primary dark:hover:text-dr-primary':isHoverEnabled,
+  'dark:text-dr-gray-400 text-gray-400 cursor-default':disableStatus,
+  '2xl:text-base max-2xl:text-sm' :size=='default',
+  '2xl:text-sm max-2xl:text-xs' :size=='extra-small',
+  '2xl:text-lg  max-2xl:text-base' :size=='medium',
+  '2xl:text-2xl max-2xl:text-xl' :size=='large',
+}">
+  <ng-content></ng-content>
+</div>
+
+
+
+
+

@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Hover effects for the icons
+.group:hover img {
+  transform: rotate(10deg);
+}
+
+// Style for the poster wrapper to make it look premium
+.bg-white.animate-fade-in-up {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  &:hover {
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.15);
+  }
+}

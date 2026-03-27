@@ -1,0 +1,36 @@
+<div class="h-full rounded-xl" [ngClass]="{
+    'hover:border-primary dark:hover:border-dr-primary': hoverType == 'primary',
+
+    'hover:border-success dark:hover:border-dr-success':hoverType=='success',
+
+    'hover:border-gray-300 dark:hover:border-dr-gray-300':hoverType=='gray',
+
+    'hover:border-info dark:hover:border-dr-info':hoverType=='info',
+
+    'hover:border-warning dark:hover:border-dr-warning':hoverType=='warning',
+
+    'hover:border-danger dark:hover:border-dr-danger':hoverType=='danger',
+    
+    'hover:border-light dark:hover:border-dr-light':hoverType == 'light',
+    'cursor-pointer':hoverType!='',
+
+    'bg-white dark:bg-coal-300': bgColor == 'white',
+    'bg-transparent': bgColor == 'none',
+
+    'border border-gray-200 border-solid dark:border-dr-gray-200': border == 'default',
+    'border-0': border == 'none',
+
+    'shadow-light-box': boxShadow == 'default' && !enableBoxShadow,
+    'shadow-none': boxShadow == 'none' && !enableBoxShadow,
+
+    'hover:shadow-md': enableBoxShadow == true && boxShadowHoverType == 'medium',
+    'hover:shadow-lg': enableBoxShadow == true && boxShadowHoverType == 'large',
+
+    'rounded-sm': round =='small',
+    'rounded-md' :round == 'default',
+    'rounded-lg' :round == 'medium',
+    'rounded-xl' : round == 'large',
+    'rounded-2xl' : round == 'extraLarge'
+  }">
+  <ng-content></ng-content>
+</div>
