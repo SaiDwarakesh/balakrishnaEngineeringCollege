@@ -13,7 +13,7 @@ export class DemoMainComponent implements OnInit, OnDestroy {
   banners = [
     {
       image: 'assets/banners/banner-1.png',
-      title: 'Excellence in Education',
+      title: 'Excellence Education',
       subtitle: 'Nurturing the leaders of tomorrow with tradition and innovation.'
     },
     {
